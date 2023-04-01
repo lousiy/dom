@@ -456,20 +456,18 @@ function hmrAcceptRun(bundle, id) {
 
 },{}]},["jTx0w"], null, "parcelRequire94c2")
 window.dom = {
-    find (selector, scope) {
-        return querySelectorAll(selector);
+    find: (selector)=>{
+        return document.querySelectorAll(selector);
+    },
+    style: (node, name, value)=>{
+        if (node.nodeType === 1) node.style[name] = value;
+        else if (node.nodeType === 3) console.log(这个是文本节点);
+    },
+    each: function(nodeList, n) {
+        const list = Array.from(nodeList);
+        if (arguments.length === 1) for(let i = 0; i < nodeList.length; i++)console.log(list[i]);
+        else if (arguments.length === 2) console.log(list[n]);
     }
 };
-style(node, name1, value);
-if (arguments.length === 3) node.style[name1] = value;
-else if (arguments.length === 2) {
-    if (typeof name1 === 'string') return node.style[name];
-    else if (name1 instanceof Object) {
-        const object = name1;
-        for(let key in object)node.style[key] = object[key];
-    }
-}
-each(nodeList, fn);
-for(let i = 0; i < nodeList.length; i++)fn.call(null, nodeList[i]);
 
 //# sourceMappingURL=index.97f57e98.js.map
